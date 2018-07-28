@@ -20,3 +20,5 @@ let twoSum = (nums, target) => {
 }
 
 twoSum([2, 7, 11, 15], 9);
+
+console.log(new LinkedList());

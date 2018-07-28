@@ -119,6 +119,7 @@ var mergeSort = function(array) {
   let half = Math.floor(array.length/2);
   let left = array.slice(0, half);
   let right = array.slice(half);
+  debugger;
   return merge(mergeSort(left), mergeSort(right));
 
 };
