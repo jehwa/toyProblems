@@ -15,33 +15,50 @@ The number of tasks is in the range [1, 10000].
 The integer n is in the range [0, 100].
  */
 
- let leastInterval = (tasks, n) => {
-  let taskObj = {};
-  let count = 0;
-  let currentTask;
-  let show = [];
-  for(let i = 0; i < tasks.length; i ++) {
-    if(!taskObj[tasks[i]]) {
-      taskObj[tasks[i]] = {
-        numbers: 1,
-        interval: 0
+let leastInterval = (tasks, n) => {
+  let working = {};
+  let output = [];
+  let i = 0;
+  while(tasks.length) {
+    // debugger;
+    if(!working[tasks[i]]) {
+      // output++;
+      output.push(tasks[i]);
+      working[tasks[i]] = n;
+      for(let key in working) {
+        if(key !== tasks[i]) {
+          if(working[key] === 1) {
+            delete working[key];
+          } else {
+            working[key]--;
+          }
+        }
       }
+      tasks.splice(i,1);
+      i = 0;
     } else {
-      taskObj[tasks[i]].numbers ++;
+      i++;
     }
-  }
-
-  while(count <= tasks.length) {
-    for(key in taskObj) {
-      if(taskObj[key].numbers > 0 && !taskObj[key].interval) {
-        show.push(key);
-        currentTask = key;
-        taskObj[key].numbers --;
-        
+    if(i >= tasks.length) {
+      if(tasks.length) {
+        // output++;
+        output.push('idle');
+        for(let key in working) {
+          if(working[key] === 1) {
+            delete working[key];
+          } else {
+            working[key] --;
+          }
+        }
+        i = 0;
       }
     }
   }
 
- }
+  return output;
 
- console.log(leastInterval(["A", "A", "B", "C"]));
+}
+
+let test = ["A","A","A","A","A","A","B","C","D","E","F","G"]
+
+ console.log(leastInterval(test, 2));
