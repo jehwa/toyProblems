@@ -14,7 +14,6 @@ let countSorting = (arr) => {
   }
 
   for(let k = 0; k < arr.length; k ++) {
-    // debugger;
     output[freq[arr[k]] - 1] = arr[k];
     freq[arr[k]] --;
   }
