@@ -44,15 +44,17 @@ let activityNotifications = (expenditure, d) => {
   let median;
   let count = 0;
   let output = 0;
+  let odd = d % 2;
 
   for(let i = 0; i < d; i ++) {
     freq[expenditure[i]] = (freq[expenditure[i]] || 0) + 1;
   }
 
   for(let j = d; j < expenditure.length; j ++) {
+    debugger;
     for(let k = 0; k < freq.length; k ++) {
       count += (freq[k] || 0);
-      if(d % 2) {
+      if(odd) {
         if(count >= Math.ceil(d/2)) {
           median = k;
           break;
@@ -94,4 +96,4 @@ let test2 = [2,3,4,2,3,6,8,4,5];
 let testD2 = 5
 //2
 
-console.log(activityNotifications(test, testD));
+console.log(activityNotifications(test2, testD2));
