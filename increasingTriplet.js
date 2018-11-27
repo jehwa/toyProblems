@@ -18,24 +18,20 @@ Output: false
 */
 
 let increasingTriplet = (nums) => {
-  let output = false;
-  if(!nums.length) return output;
   let min = nums[0];
-  let count = 0;
-  for(let i = 1; i < nums.length; i ++){
-    debugger;
-    if(nums[i] > min) {
-      count ++;
-      min = nums[i];
-      if(count >= 2) {
-        output = true;
-      }
+  let nextMin = Infinity;
+  // debugger;
+  for(let val of nums) {
+    if(val <= min) {
+      min = val;
+    } else if(val <= nextMin) {
+      nextMin = val;
     } else {
-      min = nums[i];
-      count = 0;
+      return true;
     }
   }
-  return output;
+  return false;
+
 }
 
 let test = [1,2,3,4,5] // true;
@@ -44,4 +40,4 @@ let test2 = [2,1,5,0,4,6] //true;
 let test3 = [5,1,5,5,2,5,4] // true
 let test4 = [0,4,2,1,0,-1,-3] // false
 
-console.log(increasingTriplet(test4))
+console.log(increasingTriplet(test1))
