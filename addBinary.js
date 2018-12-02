@@ -43,3 +43,4 @@ console.log(addBinary("1111", "1111"));
 
 // add two way auth test!
 // one more test
+// test caching
