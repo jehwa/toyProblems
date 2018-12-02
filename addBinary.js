@@ -40,3 +40,5 @@ let addBinary = (a,b) => {
 }
 
 console.log(addBinary("1111", "1111"));
+
+// add two way auth test!
